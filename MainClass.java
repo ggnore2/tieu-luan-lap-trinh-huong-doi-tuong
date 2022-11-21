@@ -14,8 +14,8 @@ public class MainClass {
         BoPhanBaoTriTongThe boPhanBaoTriTongThe = new BoPhanBaoTriTongThe();
         BoPhanVanChuyen boPhanVanChuyen = new BoPhanVanChuyen();
 
-        Kho s = new Kho("Kho A", 0, 1000);
-        Kho a = new Kho("Kho A", 0, 9999);
+        Kho s = new Kho("Kho A", 5, 19999);
+        Kho a = new Kho("Kho A", 5, 20000);
         // boPhanVanChuyen.nhapKho(s);
 
         // boPhanVanChuyen.nhapKho(a);
@@ -23,6 +23,7 @@ public class MainClass {
                 "gioi han cua kho");
         ArrayList<String> giaTris = taoArrayListStringTuCacString("Kho A", "0", "9999");
         try {
+            // boPhanVanChuyen.thayDoiChinhXacKho(s, a);
             boPhanMuaBan.mua();
         } catch (Exception e) {
             System.out.println(e.getMessage());

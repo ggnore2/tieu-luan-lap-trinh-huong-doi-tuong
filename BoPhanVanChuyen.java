@@ -38,6 +38,7 @@ public class BoPhanVanChuyen extends AbstractBoPhanVanChuyen implements BoPhan {
         BoPhanBaoTriTongThe boPhanBaoTriTongThe = new BoPhanBaoTriTongThe();
 
         BoPhanMuaBan boPhanMuaBan = new BoPhanMuaBan();
+        ArrayList<GiaoDich> giaoDichDeXoas = new ArrayList<GiaoDich>();
         try {
             ArrayList<String> giaoDichs = new ArrayList<String>(Arrays.asList(boPhanMuaBan.showGiaoDich().split("\n")));
             if (giaoDichs.size() < 1) {
@@ -53,19 +54,26 @@ public class BoPhanVanChuyen extends AbstractBoPhanVanChuyen implements BoPhan {
                         System.out.println("khong co kho");
                         continue;
                     }
+
                     Kho kho = khos.get(0);
-                    Kho khoMoi = kho;
+                    Kho khoMoi = Kho.fromString(kho.toString(this.attributeSeparator), this.attributeSeparator);
                     String tenKho = kho.getTenKho();
+
                     for (int j = 0; j < n; j++) {
-                        new Hang(tenKho, tenKho, tenKho, tenKho, tenKho);
                         Hang hang = new Hang(giaoDich.getTenHang(), giaoDich.getLoaiHang(), tenKho,
                                 giaoDich.getNguoiBan(), "");
                         boPhanBaoTriTongThe.nhapHang(hang);
                     }
+
                     int soLuongCu = kho.getSoLuongHangTrongKho();
-                    kho.setSoLuongHangTrongKho(soLuongCu + n);
-                    this.thayDoiChinhXacKho(kho, khoMoi);
+                    khoMoi.setSoLuongHangTrongKho(soLuongCu + n);
+                    BoPhanVanChuyen boPhanVanChuyen = new BoPhanVanChuyen();
+                    boPhanVanChuyen.thayDoiChinhXacKho(kho, khoMoi);
+                    giaoDichDeXoas.add(giaoDich);
                 }
+            }
+            for (GiaoDich giaoDichDeXoa : giaoDichDeXoas) {
+                boPhanMuaBan.xoaChinhXacGiaoDich(giaoDichDeXoa);
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -187,7 +195,6 @@ public class BoPhanVanChuyen extends AbstractBoPhanVanChuyen implements BoPhan {
             for (int i = 1; i < al.size(); i++) {
                 Kho tempKho = Kho.fromString(al.get(i), attributeSeparator);
                 if (tempKho.getGioiHanCuaKho() - tempKho.getSoLuongHangTrongKho() >= soLuongDuCuaKho) {
-                    System.out.println("ye");
                     khos.add(tempKho);
                 }
             }
@@ -301,12 +308,8 @@ public class BoPhanVanChuyen extends AbstractBoPhanVanChuyen implements BoPhan {
                     Arrays.asList(Files.readString(Path.of(this.khoPath)).split("\n")));
             for (int i = 1; i < al.size(); i++) {
                 Kho tempKho = Kho.fromString(al.get(i), this.attributeSeparator);
-                System.out.println(tempKho.toString(this.attributeSeparator));
-                System.out.println(khoCu.toString(this.attributeSeparator));
-
-                System.out.println(tempKho.equals(khoCu));
                 if (tempKho.equals(khoCu)) {
-                    System.out.println("ad");
+                    System.out.println("unequal :(");
                     index = i;
                     break;
                 }
