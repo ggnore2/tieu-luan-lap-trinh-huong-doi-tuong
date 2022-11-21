@@ -1,4 +1,5 @@
 Id,ten hang,loai hang,kho cua hang,ten nha san xuat,ten nha ban le,thoi diem nhap,thoi diem xuat
-1669024974400,keo,thuc an,Kho A,nha san xuat,,Mon Nov 21 17:02:54 ICT 2022,Mon Nov 21 17:02:54 ICT 2022
-1669026146358,keo,thuc an,Kho A,nha san xuat,,Mon Nov 21 17:22:26 ICT 2022,Mon Nov 21 17:22:26 ICT 2022
-1669026146369,keo,thuc an,Kho A,nha san xuat,,Mon Nov 21 17:22:26 ICT 2022,Mon Nov 21 17:22:26 ICT 2022
+1669024974400,keo,thuc an,da ban,nha san xuat,,Mon Nov 21 17:02:54 ICT 2022,Mon Nov 21 17:02:54 ICT 2022
+1669035730053,banh kem,thuc an,Kho A,nha san xuat,,Mon Nov 21 20:02:10 ICT 2022,Mon Nov 21 20:02:10 ICT 2022
+1669035875081,thuoc,nhu pham,Kho A,nha san xuat,,Mon Nov 21 20:04:35 ICT 2022,Mon Nov 21 20:04:35 ICT 2022
+1669035875082,thuoc,nhu pham,Kho A,nha san xuat,,Mon Nov 21 20:04:35 ICT 2022,Mon Nov 21 20:04:35 ICT 2022

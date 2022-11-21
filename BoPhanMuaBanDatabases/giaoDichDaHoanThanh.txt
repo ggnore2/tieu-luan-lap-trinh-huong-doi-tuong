@@ -1,0 +1,3 @@
+ten hang,loai hang,so luong,nguoi mua,nguoi ban,thoi diem giao dich
+thuoc,nhu pham,2,cong ty,nha san xuat,Mon Nov 21 20:04:34 ICT 2022
+keo,thuc an,1,nha ban le,cong ty,Mon Nov 21 22:09:17 ICT 2022

@@ -15,8 +15,13 @@ public class BoPhanMuaBan extends AbstractBoPhanMuaBan implements BoPhan {
     private String parentPath = "./BoPhanMuaBanDatabases/";
     private String giaDatabasePath = "./BoPhanMuaBanDatabases/gia.txt";
     private String giaoDichDatabasePath = "./BoPhanMuaBanDatabases/giaoDich.txt";
+    private String giaoDichDaHoanThanhDatabasePath = "./BoPhanMuaBanDatabases/giaoDichDaHoanThanh.txt";
     private String attributeSeparator = ",";
     private String tenCongTy = "cong ty";
+
+    public String getGiaoDichDaHoanThanhDatabasePath() {
+        return this.giaoDichDaHoanThanhDatabasePath;
+    }
 
     public String showGia() {
         String gias = "";
@@ -47,16 +52,16 @@ public class BoPhanMuaBan extends AbstractBoPhanMuaBan implements BoPhan {
         Scanner sc = new Scanner(System.in);
 
         BoPhanBaoTriTongThe boPhanBaoTriTongThe = new BoPhanBaoTriTongThe();
-        System.out.println("Ten hang : \n");
+        System.out.println("Ten hang :");
         tenHang = sc.nextLine();
 
-        System.out.println("Loai hang : \n");
+        System.out.println("Loai hang :");
         loaiHang = sc.nextLine();
 
-        System.out.println("So luong : \n");
+        System.out.println("So luong :");
         soLuong = Integer.valueOf(sc.nextLine());
 
-        System.out.println("Ten nha ban le : \n");
+        System.out.println("Ten nha ban le :");
         tenNhaBanLe = sc.nextLine();
 
         sc.close();
@@ -70,21 +75,37 @@ public class BoPhanMuaBan extends AbstractBoPhanMuaBan implements BoPhan {
         ArrayList<String> giaTris = new ArrayList<String>(Arrays.asList(tenHang, loaiHang));
         ArrayList<Hang> hangs = boPhanBaoTriTongThe.timHangTheoThuocTinh(thuocTinhs, giaTris);
 
+        ArrayList<Integer> indexes = new ArrayList<Integer>();
+        for (int i = 0; i < hangs.size(); i++) {
+            if (hangs.get(i).getKhoCuaHang().equals("da ban")) {
+                indexes.add(i);
+            }
+        }
+        int count = 0;
+
+        for (int index : indexes) {
+            hangs.remove(index - count);
+            count += 1;
+        }
+
         if (hangs.size() < soLuong) {
             System.out.println("Khong du hang de ban\n");
             return;
         }
-        ;
         ArrayList<Hang> hangsTemp = new ArrayList<Hang>();
-        hangsTemp.addAll(hangs);
-        int index = 0;
-        for (Hang hang : hangs) {
-            hangsTemp.get(index).setKhoCuaHang("dang ban");
-            boPhanBaoTriTongThe.thayDoiChinhXacHang(hang, hangsTemp.get(index));
-        }
-        GiaoDich giaoDich = new GiaoDich(tenHang, loaiHang, tenNhaBanLe, "", soLuong, new Date());
-        this.nhapGiaoDich(giaoDich);
 
+        for (Hang hang : hangs) {
+            hangsTemp.add(Hang.fromString(hang.toString(this.attributeSeparator), this.attributeSeparator));
+        }
+        for (int i = 0; i < hangs.size(); i++) {
+            hangsTemp.get(i).setKhoCuaHang("dang ban");
+
+            boPhanBaoTriTongThe.thayDoiChinhXacHang(hangs.get(i), hangsTemp.get(i));
+        }
+        GiaoDich giaoDich = new GiaoDich(tenHang, loaiHang, tenNhaBanLe, this.tenCongTy, soLuong, new Date());
+        this.nhapGiaoDich(giaoDich);
+        BoPhanVanChuyen boPhanVanChuyen = new BoPhanVanChuyen();
+        boPhanVanChuyen.vanChuyenGiaoDichBan();
     }
 
     public void mua() {
@@ -163,11 +184,38 @@ public class BoPhanMuaBan extends AbstractBoPhanMuaBan implements BoPhan {
             }
         }
 
+        File giaoDichDaHoanThanhDatabase = new File(this.giaoDichDaHoanThanhDatabasePath);
+
+        if (!giaoDichDaHoanThanhDatabase.exists()) {
+            try {
+                FileWriter fw = new FileWriter(giaoDichDaHoanThanhDatabase);
+
+                String content = String.format(
+                        "ten hang%sloai hang%sso luong%snguoi mua%snguoi ban%sthoi diem giao dich\n",
+                        this.attributeSeparator, this.attributeSeparator, this.attributeSeparator,
+                        this.attributeSeparator, this.attributeSeparator);
+                fw.write(content);
+                fw.close();
+            } catch (Exception e) {
+                System.out.printf("Error creating %s\n", this.giaoDichDatabasePath);
+            }
+        }
+
     }
 
     public void nhapGiaoDich(GiaoDich giaoDichNhap) {
         try {
             FileWriter writer = new FileWriter(new File(this.giaoDichDatabasePath), true);
+            writer.write(giaoDichNhap.toString(this.attributeSeparator) + "\n");
+            writer.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    };
+
+    public void nhapGiaoDichDaHoanThanh(GiaoDich giaoDichNhap) {
+        try {
+            FileWriter writer = new FileWriter(new File(this.giaoDichDaHoanThanhDatabasePath), true);
             writer.write(giaoDichNhap.toString(this.attributeSeparator) + "\n");
             writer.close();
         } catch (Exception e) {

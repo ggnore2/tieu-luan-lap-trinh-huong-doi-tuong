@@ -57,7 +57,7 @@ public class Hang {
         this.tenNhaSanXuat = tenNhaSanXuat;
     }
 
-    public static Hang taoHang(String input, String attributeSeparator) {
+    public static Hang fromString(String input, String attributeSeparator) {
         String[] mangCacThuocTinh = input.split(attributeSeparator);
         Hang newHang = new Hang();
         try {
@@ -105,7 +105,7 @@ public class Hang {
     }
 
     public void setThoiDiemXuat(Date d) {
-        this.thoiDiemNhap = d;
+        this.thoiDiemXuat = d;
     }
 
     // get oprations
@@ -138,64 +138,37 @@ public class Hang {
     }
 
     public Date getThoiDiemXuat() {
-        return this.thoiDiemNhap;
+        return this.thoiDiemXuat;
     }
 
-    public boolean equals(Hang h) {
-        if (this.Id != h.Id) {
-            return false;
+    public boolean equals(Hang hangNhap) {
+        boolean result = true;
+        if (this.getId() != hangNhap.getId()) {
+            result = false;
         }
-        if (!(this.tenHang.toLowerCase().trim().equals(h.tenHang))) {
+        if (!(this.getTenHang().toLowerCase().trim().equals(hangNhap.getTenHang().toLowerCase().trim()))) {
 
-            return false;
+            result = false;
         }
-        if (!(this.loaiHang.toLowerCase().trim().equals(h.loaiHang))) {
-            return false;
+        if (!(this.getLoaiHang().toLowerCase().trim().equals(hangNhap.getLoaiHang().toLowerCase().trim()))) {
+            result = false;
         }
-        if (!(this.khoCuaHang.toLowerCase().trim().equals(h.khoCuaHang))) {
-            return false;
+        if (!(this.getKhoCuaHang().toLowerCase().trim().equals(hangNhap.getKhoCuaHang().toLowerCase().trim()))) {
+            result = false;
         }
-        if (!(this.tenNhaSanXuat.toLowerCase().trim().equals(h.tenNhaSanXuat))) {
-            return false;
+        if (!(this.getTenNhaSanXuat().toLowerCase().trim().equals(hangNhap.getTenNhaSanXuat().toLowerCase().trim()))) {
+            result = false;
         }
-        if (!(this.tenNhaBanLe.toLowerCase().trim().equals(h.tenNhaBanLe))) {
-            return false;
+        if (!(this.getTenNhaBanLe().toLowerCase().trim().equals(hangNhap.getTenNhaBanLe().toLowerCase().trim()))) {
+            result = false;
         }
-        if (!(this.thoiDiemNhap.equals(h.thoiDiemNhap))) {
-            return false;
+        if (!(this.getThoiDiemNhap().equals(hangNhap.getThoiDiemNhap()))) {
+            result = false;
         }
-        if (!(this.thoiDiemXuat.equals(h.thoiDiemXuat))) {
-            return false;
+        if (!(this.getThoiDiemXuat().equals(hangNhap.getThoiDiemXuat()))) {
+            result = false;
         }
-        return true;
-    }
-
-    public boolean equalsOne(Hang h) {
-        if (this.Id == h.Id) {
-            return true;
-        }
-        if (this.tenHang.equals(h.tenHang)) {
-            return true;
-        }
-        if (this.loaiHang.equals(h.loaiHang)) {
-            return true;
-        }
-        if (this.khoCuaHang.equals(h.khoCuaHang)) {
-            return true;
-        }
-        if (this.tenNhaSanXuat.equals(h.tenNhaSanXuat)) {
-            return true;
-        }
-        if (this.tenNhaBanLe.equals(h.tenNhaBanLe)) {
-            return true;
-        }
-        if (this.thoiDiemNhap.equals(h.thoiDiemNhap)) {
-            return true;
-        }
-        if (this.thoiDiemNhap.equals(h.thoiDiemXuat)) {
-            return true;
-        }
-        return false;
+        return result;
     }
 
     public String toString(String attributeSeparator) {

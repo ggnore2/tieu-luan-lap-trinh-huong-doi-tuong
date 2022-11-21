@@ -53,29 +53,17 @@ public class NhaSanXuat {
     }
 
     public boolean equals(NhaSanXuat nhaSanXuat) {
-        if (!(this.getTenNhaSanXuat().toLowerCase().trim().equals(nhaSanXuat.getTenNhaSanXuat()))) {
+        if (!(this.getTenNhaSanXuat().toLowerCase().trim().equals(nhaSanXuat.getTenNhaSanXuat().toLowerCase()
+                .trim()))) {
             return false;
         }
-        if (!(this.getDiaDiem().toLowerCase().trim().equals(nhaSanXuat.getDiaDiem()))) {
+        if (!(this.getDiaDiem().toLowerCase().trim().equals(nhaSanXuat.getDiaDiem().toLowerCase().trim()))) {
             return false;
         }
-        if (!(this.getSoDienThoai().toLowerCase().trim().equals(nhaSanXuat.getSoDienThoai()))) {
+        if (!(this.getSoDienThoai().toLowerCase().trim().equals(nhaSanXuat.getSoDienThoai().toLowerCase().trim()))) {
             return false;
         }
         return true;
-    }
-
-    public boolean equalsOne(NhaSanXuat nhaSanXuat) {
-        if (this.getTenNhaSanXuat().toLowerCase().trim().equals(nhaSanXuat.getTenNhaSanXuat())) {
-            return true;
-        }
-        if (this.getDiaDiem().toLowerCase().trim().equals(nhaSanXuat.getDiaDiem())) {
-            return true;
-        }
-        if (this.getSoDienThoai().toLowerCase().trim().equals(nhaSanXuat.getSoDienThoai())) {
-            return true;
-        }
-        return false;
     }
 
     public String toString(String attributeSeparator) {

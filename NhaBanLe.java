@@ -53,29 +53,16 @@ public class NhaBanLe {
     }
 
     public boolean equals(NhaBanLe nhaBanLe) {
-        if (!(this.getTenNhaBanLe().trim().toLowerCase().equals(nhaBanLe.getTenNhaBanLe()))) {
+        if (!(this.getTenNhaBanLe().trim().toLowerCase().equals(nhaBanLe.getTenNhaBanLe().toLowerCase().trim()))) {
             return false;
         }
-        if (!(this.getDiaDiem().trim().toLowerCase().equals(nhaBanLe.getDiaDiem()))) {
+        if (!(this.getDiaDiem().trim().toLowerCase().equals(nhaBanLe.getDiaDiem().toLowerCase().trim()))) {
             return false;
         }
-        if (!(this.getSoDienThoai().trim().toLowerCase().equals(nhaBanLe.getSoDienThoai()))) {
+        if (!(this.getSoDienThoai().trim().toLowerCase().equals(nhaBanLe.getSoDienThoai().toLowerCase().trim()))) {
             return false;
         }
         return true;
-    }
-
-    public boolean equalsOne(NhaBanLe nhaBanLe) {
-        if (this.getTenNhaBanLe().trim().equals(nhaBanLe.getTenNhaBanLe())) {
-            return true;
-        }
-        if (this.getDiaDiem().trim().equals(nhaBanLe.getDiaDiem())) {
-            return true;
-        }
-        if (this.getSoDienThoai().trim().equals(nhaBanLe.getSoDienThoai())) {
-            return true;
-        }
-        return false;
     }
 
     public String toString(String attributeSeparator) {

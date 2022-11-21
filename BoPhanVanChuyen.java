@@ -49,7 +49,6 @@ public class BoPhanVanChuyen extends AbstractBoPhanVanChuyen implements BoPhan {
                 if (giaoDich.getNguoiMua().toLowerCase().trim().equals(this.tenCongTy)) {
                     int n = giaoDich.getSoLuong();
                     ArrayList<Kho> khos = this.timKhoTheoSoLuongDuCuaKho(n);
-                    System.out.println(khos.size());
                     if (khos.size() < 1) {
                         System.out.println("khong co kho");
                         continue;
@@ -74,7 +73,9 @@ public class BoPhanVanChuyen extends AbstractBoPhanVanChuyen implements BoPhan {
             }
             for (GiaoDich giaoDichDeXoa : giaoDichDeXoas) {
                 boPhanMuaBan.xoaChinhXacGiaoDich(giaoDichDeXoa);
+                boPhanMuaBan.nhapGiaoDichDaHoanThanh(giaoDichDeXoa);
             }
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -82,23 +83,52 @@ public class BoPhanVanChuyen extends AbstractBoPhanVanChuyen implements BoPhan {
 
     public void vanChuyenGiaoDichBan() {
         BoPhanBaoTriTongThe boPhanBaoTriTongThe = new BoPhanBaoTriTongThe();
+
         BoPhanMuaBan boPhanMuaBan = new BoPhanMuaBan();
+
         ArrayList<String> giaoDichs = new ArrayList<String>(Arrays.asList(boPhanMuaBan.showGiaoDich().split("\n")));
-        for (String giaoDich : giaoDichs) {
-            GiaoDich giaoDichTemp = GiaoDich.fromString(giaoDich, this.attributeSeparator);
-            if (!giaoDichTemp.getNguoiMua().equals(this.tenCongTy)) {
+
+        ArrayList<GiaoDich> giaoDichDeXoas = new ArrayList<GiaoDich>();
+
+        for (int i = 1; i < giaoDichs.size(); i++) {
+            GiaoDich giaoDichTemp = GiaoDich.fromString(giaoDichs.get(i), this.attributeSeparator);
+            if (!giaoDichTemp.getNguoiMua().equals(this.tenCongTy)
+                    && (giaoDichTemp.getNguoiBan().equals(this.tenCongTy))) {
                 ArrayList<String> thuocTinhs = new ArrayList<String>(Arrays.asList("kho cua hang"));
+
                 ArrayList<String> giaTris = new ArrayList<String>(Arrays.asList("dang ban"));
+
                 ArrayList<Hang> hangs = boPhanBaoTriTongThe.timHangTheoThuocTinh(thuocTinhs, giaTris);
 
+                ArrayList<Integer> indexes = new ArrayList<Integer>();
+                for (int j = 0; j < hangs.size(); j++) {
+                    if (hangs.get(j).getKhoCuaHang().equals("da ban")) {
+                        indexes.add(j);
+                    }
+                }
+                int count = 0;
+
+                for (int index : indexes) {
+                    hangs.remove(index - count);
+                    count += 1;
+                }
+
                 ArrayList<Hang> hangsTemp = new ArrayList<Hang>();
-                hangsTemp.addAll(hangs);
+                for (Hang hang : hangs) {
+                    hangsTemp.add(Hang.fromString(hang.toString(this.attributeSeparator), this.attributeSeparator));
+                }
                 int index = 0;
                 for (Hang hang : hangs) {
                     hangsTemp.get(index).setKhoCuaHang("da ban");
                     boPhanBaoTriTongThe.thayDoiChinhXacHang(hang, hangsTemp.get(index));
                 }
+                giaoDichDeXoas.add(giaoDichTemp);
+
             }
+        }
+        for (GiaoDich giaoDichDeXoa : giaoDichDeXoas) {
+            boPhanMuaBan.xoaChinhXacGiaoDich(giaoDichDeXoa);
+            boPhanMuaBan.nhapGiaoDichDaHoanThanh(giaoDichDeXoa);
         }
     }
 
@@ -309,7 +339,6 @@ public class BoPhanVanChuyen extends AbstractBoPhanVanChuyen implements BoPhan {
             for (int i = 1; i < al.size(); i++) {
                 Kho tempKho = Kho.fromString(al.get(i), this.attributeSeparator);
                 if (tempKho.equals(khoCu)) {
-                    System.out.println("unequal :(");
                     index = i;
                     break;
                 }

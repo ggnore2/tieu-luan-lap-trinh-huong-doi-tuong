@@ -16,18 +16,8 @@ public class MainClass {
 
         Kho s = new Kho("Kho A", 5, 19999);
         Kho a = new Kho("Kho A", 5, 20000);
-        // boPhanVanChuyen.nhapKho(s);
 
-        // boPhanVanChuyen.nhapKho(a);
-        ArrayList<String> thuocTinhs = taoArrayListStringTuCacString("ten kho", "so luong hang trong kho",
-                "gioi han cua kho");
-        ArrayList<String> giaTris = taoArrayListStringTuCacString("Kho A", "0", "9999");
-        try {
-            // boPhanVanChuyen.thayDoiChinhXacKho(s, a);
-            boPhanMuaBan.mua();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        boPhanMuaBan.ban();
 
     }
 

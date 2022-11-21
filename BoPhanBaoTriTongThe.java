@@ -132,32 +132,9 @@ public class BoPhanBaoTriTongThe extends AbstractBoPhanBaoTriTongThe implements 
             while ((hang = bufferreader.readLine()) != null) {
                 // "Id%sten hang%sloai hang%skho cua hang%sten nha san xuat%sten nha ban
                 // le%sthoi diem nhap\n"
-                Hang tempHang = Hang.taoHang(hang, this.attributeSeparator);
+                Hang tempHang = Hang.fromString(hang, this.attributeSeparator);
                 if (tempHang.equals(hangNhap)) {
                     hangs.add(tempHang);
-                }
-            }
-            bufferreader.close();
-        } catch (Exception e) {
-            System.out.printf("%s\n", e.getMessage());
-        }
-
-        return hangs;
-    }
-
-    public ArrayList<Hang> timMotPhanChinhXacHang(Hang hangNhap) {
-        File hangDatabase = new File(this.hangDatabasePath);
-        String hang;
-        ArrayList<Hang> hangs = new ArrayList<Hang>();
-        try {
-            BufferedReader bufferreader = new BufferedReader(new FileReader(hangDatabase));
-            bufferreader.readLine();
-            while ((hang = bufferreader.readLine()) != null) {
-
-                Hang tempHang = Hang.taoHang(hang, this.attributeSeparator);
-
-                if (tempHang.equalsOne(hangNhap)) {
-                    hangs.add(hangNhap);
                 }
             }
             bufferreader.close();
@@ -177,7 +154,7 @@ public class BoPhanBaoTriTongThe extends AbstractBoPhanBaoTriTongThe implements 
             bufferreader.readLine();
             while ((hang = bufferreader.readLine()) != null) {
 
-                Hang tempHang = Hang.taoHang(hang, this.attributeSeparator);
+                Hang tempHang = Hang.fromString(hang, this.attributeSeparator);
 
                 if (tempHang.getLoaiHang().toLowerCase().trim().equals(loaiHang.toLowerCase().trim())) {
                     hangs.add(tempHang);
@@ -200,7 +177,7 @@ public class BoPhanBaoTriTongThe extends AbstractBoPhanBaoTriTongThe implements 
             bufferreader.readLine();
             while ((hang = bufferreader.readLine()) != null) {
 
-                Hang tempHang = Hang.taoHang(hang, this.attributeSeparator);
+                Hang tempHang = Hang.fromString(hang, this.attributeSeparator);
 
                 if (tempHang.getLoaiHang().toLowerCase().trim().equals(loaiHang.toLowerCase().trim())) {
                     hangs.add(hang);
@@ -223,7 +200,7 @@ public class BoPhanBaoTriTongThe extends AbstractBoPhanBaoTriTongThe implements 
             bufferreader.readLine();
             while ((hang = bufferreader.readLine()) != null) {
 
-                Hang tempHang = Hang.taoHang(hang, this.attributeSeparator);
+                Hang tempHang = Hang.fromString(hang, this.attributeSeparator);
 
                 if (tempHang.getId() == Id) {
                     hangs.add(tempHang);
@@ -246,7 +223,7 @@ public class BoPhanBaoTriTongThe extends AbstractBoPhanBaoTriTongThe implements 
             bufferreader.readLine();
             while ((hang = bufferreader.readLine()) != null) {
 
-                Hang tempHang = Hang.taoHang(hang, this.attributeSeparator);
+                Hang tempHang = Hang.fromString(hang, this.attributeSeparator);
 
                 if (tempHang.getId() == Id) {
                     hangs.add(hang);
@@ -269,7 +246,7 @@ public class BoPhanBaoTriTongThe extends AbstractBoPhanBaoTriTongThe implements 
             bufferreader.readLine();
             while ((hang = bufferreader.readLine()) != null) {
 
-                Hang tempHang = Hang.taoHang(hang, this.attributeSeparator);
+                Hang tempHang = Hang.fromString(hang, this.attributeSeparator);
 
                 if (tempHang.getTenHang().toLowerCase().trim().equals(tenHang.toLowerCase().trim())) {
                     hangs.add(tempHang);
@@ -292,7 +269,7 @@ public class BoPhanBaoTriTongThe extends AbstractBoPhanBaoTriTongThe implements 
             bufferreader.readLine();
             while ((hang = bufferreader.readLine()) != null) {
 
-                Hang tempHang = Hang.taoHang(hang, this.attributeSeparator);
+                Hang tempHang = Hang.fromString(hang, this.attributeSeparator);
 
                 if (tempHang.getTenHang().toLowerCase().trim().equals(tenHang.toLowerCase().trim())) {
                     hangs.add(hang);
@@ -315,7 +292,7 @@ public class BoPhanBaoTriTongThe extends AbstractBoPhanBaoTriTongThe implements 
             bufferreader.readLine();
             while ((hang = bufferreader.readLine()) != null) {
 
-                Hang tempHang = Hang.taoHang(hang, this.attributeSeparator);
+                Hang tempHang = Hang.fromString(hang, this.attributeSeparator);
 
                 if (tempHang.getKhoCuaHang().toLowerCase().trim().equals(khoCuaHang.toLowerCase().trim())) {
                     hangs.add(tempHang);
@@ -338,7 +315,7 @@ public class BoPhanBaoTriTongThe extends AbstractBoPhanBaoTriTongThe implements 
             bufferreader.readLine();
             while ((hang = bufferreader.readLine()) != null) {
 
-                Hang tempHang = Hang.taoHang(hang, this.attributeSeparator);
+                Hang tempHang = Hang.fromString(hang, this.attributeSeparator);
 
                 if (tempHang.getKhoCuaHang().toLowerCase().trim().equals(khoCuaHang.toLowerCase().trim())) {
                     hangs.add(hang);
@@ -361,7 +338,7 @@ public class BoPhanBaoTriTongThe extends AbstractBoPhanBaoTriTongThe implements 
             bufferreader.readLine();
             while ((hang = bufferreader.readLine()) != null) {
 
-                Hang tempHang = Hang.taoHang(hang, this.attributeSeparator);
+                Hang tempHang = Hang.fromString(hang, this.attributeSeparator);
 
                 if (tempHang.getTenNhaSanXuat().toLowerCase().trim().equals(nhaSanXuat.toLowerCase().trim())) {
                     hangs.add(tempHang);
@@ -384,7 +361,7 @@ public class BoPhanBaoTriTongThe extends AbstractBoPhanBaoTriTongThe implements 
             bufferreader.readLine();
             while ((hang = bufferreader.readLine()) != null) {
 
-                Hang tempHang = Hang.taoHang(hang, this.attributeSeparator);
+                Hang tempHang = Hang.fromString(hang, this.attributeSeparator);
 
                 if (tempHang.getTenNhaSanXuat().toLowerCase().trim().equals(nhaSanXuat.toLowerCase().trim())) {
                     hangs.add(hang);
@@ -407,7 +384,7 @@ public class BoPhanBaoTriTongThe extends AbstractBoPhanBaoTriTongThe implements 
             bufferreader.readLine();
             while ((hang = bufferreader.readLine()) != null) {
 
-                Hang tempHang = Hang.taoHang(hang, this.attributeSeparator);
+                Hang tempHang = Hang.fromString(hang, this.attributeSeparator);
 
                 if (tempHang.getTenNhaBanLe().toLowerCase().trim().equals(nhaBanLe.toLowerCase().trim())) {
                     hangs.add(tempHang);
@@ -430,7 +407,7 @@ public class BoPhanBaoTriTongThe extends AbstractBoPhanBaoTriTongThe implements 
             bufferreader.readLine();
             while ((hang = bufferreader.readLine()) != null) {
 
-                Hang tempHang = Hang.taoHang(hang, this.attributeSeparator);
+                Hang tempHang = Hang.fromString(hang, this.attributeSeparator);
 
                 if (tempHang.getTenNhaBanLe().toLowerCase().trim().equals(nhaBanLe.toLowerCase().trim())) {
                     hangs.add(hang);
@@ -453,7 +430,7 @@ public class BoPhanBaoTriTongThe extends AbstractBoPhanBaoTriTongThe implements 
             bufferreader.readLine();
             while ((hang = bufferreader.readLine()) != null) {
 
-                Hang tempHang = Hang.taoHang(hang, this.attributeSeparator);
+                Hang tempHang = Hang.fromString(hang, this.attributeSeparator);
 
                 if (tempHang.getThoiDiemNhap().equals(thoiDiemNhap)) {
                     hangs.add(tempHang);
@@ -476,7 +453,7 @@ public class BoPhanBaoTriTongThe extends AbstractBoPhanBaoTriTongThe implements 
             bufferreader.readLine();
             while ((hang = bufferreader.readLine()) != null) {
 
-                Hang tempHang = Hang.taoHang(hang, this.attributeSeparator);
+                Hang tempHang = Hang.fromString(hang, this.attributeSeparator);
 
                 if (tempHang.getThoiDiemNhap().equals(thoiDiemNhap)) {
                     hangs.add(hang);
@@ -499,7 +476,7 @@ public class BoPhanBaoTriTongThe extends AbstractBoPhanBaoTriTongThe implements 
             bufferreader.readLine();
             while ((hang = bufferreader.readLine()) != null) {
 
-                Hang tempHang = Hang.taoHang(hang, this.attributeSeparator);
+                Hang tempHang = Hang.fromString(hang, this.attributeSeparator);
 
                 if (tempHang.getThoiDiemXuat().equals(thoiDiemXuat)) {
                     hangs.add(tempHang);
@@ -522,7 +499,7 @@ public class BoPhanBaoTriTongThe extends AbstractBoPhanBaoTriTongThe implements 
             bufferreader.readLine();
             while ((hang = bufferreader.readLine()) != null) {
 
-                Hang tempHang = Hang.taoHang(hang, this.attributeSeparator);
+                Hang tempHang = Hang.fromString(hang, this.attributeSeparator);
 
                 if (tempHang.getThoiDiemXuat().equals(thoiDiemXuat)) {
                     hangs.add(hang);
@@ -609,7 +586,7 @@ public class BoPhanBaoTriTongThe extends AbstractBoPhanBaoTriTongThe implements 
         ArrayList<String> al = timHangTheoThuocTinhReturnString(cacThuocTinh, giaTriCacThuocTinh);
         ArrayList<Hang> result = new ArrayList<Hang>();
         for (String i : al) {
-            result.add(Hang.taoHang(i, this.attributeSeparator));
+            result.add(Hang.fromString(i, this.attributeSeparator));
         }
 
         return result;
@@ -828,32 +805,6 @@ public class BoPhanBaoTriTongThe extends AbstractBoPhanBaoTriTongThe implements 
         return result;
     }
 
-    public ArrayList<NhaBanLe> timMotPhanChinhXacNhaBanLe(NhaBanLe nhaBanLeNhap) {
-        File hangDatabase = new File(this.nhaBanLeDatabasePath);
-        String nhaBanLe;
-        ArrayList<NhaBanLe> nhaBanLes = new ArrayList<NhaBanLe>();
-        try {
-            BufferedReader bufferreader = new BufferedReader(new FileReader(hangDatabase));
-            bufferreader.readLine();
-            while ((nhaBanLe = bufferreader.readLine()) != null) {
-                String[] mangCacThuocTinh = nhaBanLe.split(this.attributeSeparator);
-
-                NhaBanLe tempNhaBanLe = new NhaBanLe();
-                tempNhaBanLe.setTenNhaBanLe(mangCacThuocTinh[0]);
-                tempNhaBanLe.setDiaDiem(mangCacThuocTinh[1]);
-                tempNhaBanLe.setSoDienThoai(mangCacThuocTinh[2]);
-                if (tempNhaBanLe.equalsOne(nhaBanLeNhap)) {
-                    nhaBanLes.add(nhaBanLeNhap);
-                }
-            }
-            bufferreader.close();
-        } catch (Exception e) {
-            System.out.printf("%s\n", e.getMessage());
-        }
-
-        return nhaBanLes;
-    }
-
     public ArrayList<NhaSanXuat> timChinhXacNhaSanXuat(NhaSanXuat nhaSanXuatNhap) {
         File nhaSanXuatDatabase = new File(this.nhaSanXuatDatabasePath);
         String nhaSanXuat;
@@ -1068,435 +1019,13 @@ public class BoPhanBaoTriTongThe extends AbstractBoPhanBaoTriTongThe implements 
         return nhaSanXuats;
     }
 
-    public ArrayList<NhaSanXuat> timMotPhanChinhXacNhaSanXuat(NhaSanXuat nhaSanXuatNhap) {
-        File nhaSanXuatDatabase = new File(this.nhaSanXuatDatabasePath);
-        String nhaSanXuat;
-        ArrayList<NhaSanXuat> nhaSanXuats = new ArrayList<NhaSanXuat>();
-        try {
-            BufferedReader bufferreader = new BufferedReader(new FileReader(nhaSanXuatDatabase));
-            bufferreader.readLine();
-            while ((nhaSanXuat = bufferreader.readLine()) != null) {
-                String[] mangCacThuocTinh = nhaSanXuat.split(this.attributeSeparator);
-
-                NhaSanXuat tempNhaSanXuat = new NhaSanXuat();
-                tempNhaSanXuat.setTenNhaSanXuat(mangCacThuocTinh[0]);
-                tempNhaSanXuat.setDiaDiem(mangCacThuocTinh[1]);
-                tempNhaSanXuat.setSoDienThoai(mangCacThuocTinh[2]);
-                if (tempNhaSanXuat.equalsOne(nhaSanXuatNhap)) {
-                    nhaSanXuats.add(nhaSanXuatNhap);
-                }
-            }
-            bufferreader.close();
-        } catch (Exception e) {
-            System.out.printf("%s\n", e.getMessage());
-        }
-
-        return nhaSanXuats;
-    }
-
-    public void xoaMotHangTheoTenHang(String tenHang) {
-        try {
-            ArrayList<String> danhSachHang = new ArrayList<String>(
-                    Arrays.asList(Files.readString(Path.of(this.hangDatabasePath)).split("\n")));
-            int index = -1;
-            for (int i = 1; i < danhSachHang.size(); i++) {
-                Hang tempHang = Hang.taoHang(danhSachHang.get(i), this.attributeSeparator);
-                if (tempHang.getTenHang().toLowerCase().trim().equals(tenHang.toLowerCase().trim())) {
-                    index = i;
-                    break;
-                }
-            }
-            if (index > 0) {
-                danhSachHang.remove(index);
-            }
-            String newDatabase = String.join("\n", danhSachHang);
-            FileWriter writer = new FileWriter(new File(this.hangDatabasePath));
-            writer.write(newDatabase);
-            writer.close();
-        } catch (Exception e) {
-            System.out.printf("%s\n", e.getMessage());
-        }
-    }
-
-    public void xoaHangTheoTenHang(String tenHang) {
-        try {
-            ArrayList<String> danhSachHang = new ArrayList<String>(
-                    Arrays.asList(Files.readString(Path.of(this.hangDatabasePath)).split("\n")));
-            ArrayList<Integer> indexes = new ArrayList<Integer>();
-            for (int i = 1; i < danhSachHang.size(); i++) {
-                Hang tempHang = Hang.taoHang(danhSachHang.get(i), this.attributeSeparator);
-                if (tempHang.getTenHang().toLowerCase().trim().equals(tenHang.toLowerCase().trim())) {
-                    indexes.add(i);
-                }
-            }
-            int count = 0;
-            for (int i : indexes) {
-                danhSachHang.remove(i - count);
-                count += 1;
-            }
-            String newDatabase = String.join("\n", danhSachHang);
-            FileWriter writer = new FileWriter(new File(this.hangDatabasePath));
-            writer.write(newDatabase);
-            writer.close();
-        } catch (Exception e) {
-            System.out.printf("%s\n", e.getMessage());
-        }
-    }
-
-    public void xoaMotHangTheoId(long Id) {
-        try {
-            ArrayList<String> danhSachHang = new ArrayList<String>(
-                    Arrays.asList(Files.readString(Path.of(this.hangDatabasePath)).split("\n")));
-            int index = -1;
-            for (int i = 1; i < danhSachHang.size(); i++) {
-                Hang tempHang = Hang.taoHang(danhSachHang.get(i), this.attributeSeparator);
-                if (tempHang.getId() == Id) {
-                    index = i;
-                    break;
-                }
-            }
-            if (index > 0) {
-                danhSachHang.remove(index);
-            }
-            String newDatabase = String.join("\n", danhSachHang);
-            FileWriter writer = new FileWriter(new File(this.hangDatabasePath));
-            writer.write(newDatabase);
-            writer.close();
-        } catch (Exception e) {
-            System.out.printf("%s\n", e.getMessage());
-        }
-    }
-
-    public void xoaHangTheoId(long Id) {
-        try {
-            ArrayList<String> danhSachHang = new ArrayList<String>(
-                    Arrays.asList(Files.readString(Path.of(this.hangDatabasePath)).split("\n")));
-            ArrayList<Integer> indexes = new ArrayList<Integer>();
-            for (int i = 1; i < danhSachHang.size(); i++) {
-                Hang tempHang = Hang.taoHang(danhSachHang.get(i), this.attributeSeparator);
-                if (tempHang.getId() == Id) {
-                    indexes.add(i);
-                }
-            }
-            int count = 0;
-            for (int i : indexes) {
-                danhSachHang.remove(i - count);
-                count += 1;
-            }
-            String newDatabase = String.join("\n", danhSachHang);
-            FileWriter writer = new FileWriter(new File(this.hangDatabasePath));
-            writer.write(newDatabase);
-            writer.close();
-        } catch (Exception e) {
-            System.out.printf("%s\n", e.getMessage());
-        }
-    }
-
-    public void xoaMotHangTheoLoaiHang(String loaiHang) {
-        try {
-            ArrayList<String> danhSachHang = new ArrayList<String>(
-                    Arrays.asList(Files.readString(Path.of(this.hangDatabasePath)).split("\n")));
-            int index = -1;
-            for (int i = 1; i < danhSachHang.size(); i++) {
-                Hang tempHang = Hang.taoHang(danhSachHang.get(i), this.attributeSeparator);
-                if (tempHang.getLoaiHang().toLowerCase().trim().equals(loaiHang.toLowerCase().trim())) {
-                    index = i;
-                    break;
-                }
-            }
-            if (index > 0) {
-                danhSachHang.remove(index);
-            }
-            String newDatabase = String.join("\n", danhSachHang);
-            FileWriter writer = new FileWriter(new File(this.hangDatabasePath));
-            writer.write(newDatabase);
-            writer.close();
-        } catch (Exception e) {
-            System.out.printf("%s\n", e.getMessage());
-        }
-    }
-
-    public void xoaHangTheoLoaiHang(String loaiHang) {
-        try {
-            ArrayList<String> danhSachHang = new ArrayList<String>(
-                    Arrays.asList(Files.readString(Path.of(this.hangDatabasePath)).split("\n")));
-            ArrayList<Integer> indexes = new ArrayList<Integer>();
-            for (int i = 1; i < danhSachHang.size(); i++) {
-                Hang tempHang = Hang.taoHang(danhSachHang.get(i), this.attributeSeparator);
-                if (tempHang.getLoaiHang().toLowerCase().trim().equals(loaiHang.toLowerCase().trim())) {
-                    indexes.add(i);
-                }
-            }
-            int count = 0;
-            for (int i : indexes) {
-                danhSachHang.remove(i - count);
-                count += 1;
-            }
-            String newDatabase = String.join("\n", danhSachHang);
-            FileWriter writer = new FileWriter(new File(this.hangDatabasePath));
-            writer.write(newDatabase);
-            writer.close();
-        } catch (Exception e) {
-            System.out.printf("%s\n", e.getMessage());
-        }
-    }
-
-    public void xoaMotHangTheoKhoCuaHang(String khoCuaHang) {
-        try {
-            ArrayList<String> danhSachHang = new ArrayList<String>(
-                    Arrays.asList(Files.readString(Path.of(this.hangDatabasePath)).split("\n")));
-            int index = -1;
-            for (int i = 1; i < danhSachHang.size(); i++) {
-                Hang tempHang = Hang.taoHang(danhSachHang.get(i), this.attributeSeparator);
-                if (tempHang.getKhoCuaHang().toLowerCase().trim().equals(khoCuaHang.toLowerCase().trim())) {
-                    index = i;
-                    break;
-                }
-            }
-            if (index > 0) {
-                danhSachHang.remove(index);
-            }
-            String newDatabase = String.join("\n", danhSachHang);
-            FileWriter writer = new FileWriter(new File(this.hangDatabasePath));
-            writer.write(newDatabase);
-            writer.close();
-        } catch (Exception e) {
-            System.out.printf("%s\n", e.getMessage());
-        }
-    }
-
-    public void xoaHangTheoKhoCuaHang(String khoCuaHang) {
-        try {
-            ArrayList<String> danhSachHang = new ArrayList<String>(
-                    Arrays.asList(Files.readString(Path.of(this.hangDatabasePath)).split("\n")));
-            ArrayList<Integer> indexes = new ArrayList<Integer>();
-            for (int i = 1; i < danhSachHang.size(); i++) {
-                Hang tempHang = Hang.taoHang(danhSachHang.get(i), this.attributeSeparator);
-                if (tempHang.getKhoCuaHang().toLowerCase().trim().equals(khoCuaHang.toLowerCase().trim())) {
-                    indexes.add(i);
-                }
-            }
-            int count = 0;
-            for (int i : indexes) {
-                danhSachHang.remove(i - count);
-                count += 1;
-            }
-            String newDatabase = String.join("\n", danhSachHang);
-            FileWriter writer = new FileWriter(new File(this.hangDatabasePath));
-            writer.write(newDatabase);
-            writer.close();
-        } catch (Exception e) {
-            System.out.printf("%s\n", e.getMessage());
-        }
-    }
-
-    public void xoaMotHangTheoTenNhaSanXuat(String tenNhaSanXuat) {
-        try {
-            ArrayList<String> danhSachHang = new ArrayList<String>(
-                    Arrays.asList(Files.readString(Path.of(this.hangDatabasePath)).split("\n")));
-            int index = -1;
-            for (int i = 1; i < danhSachHang.size(); i++) {
-                Hang tempHang = Hang.taoHang(danhSachHang.get(i), this.attributeSeparator);
-                if (tempHang.getTenNhaSanXuat().toLowerCase().trim().equals(tenNhaSanXuat.toLowerCase().trim())) {
-                    index = i;
-                    break;
-                }
-            }
-            if (index > 0) {
-                danhSachHang.remove(index);
-            }
-            String newDatabase = String.join("\n", danhSachHang);
-            FileWriter writer = new FileWriter(new File(this.hangDatabasePath));
-            writer.write(newDatabase);
-            writer.close();
-        } catch (Exception e) {
-            System.out.printf("%s\n", e.getMessage());
-        }
-    }
-
-    public void xoaHangTheoTenNhaSanXuat(String tenNhaSanXuat) {
-
-        try {
-            ArrayList<String> danhSachHang = new ArrayList<String>(
-                    Arrays.asList(Files.readString(Path.of(this.hangDatabasePath)).split("\n")));
-            ArrayList<Integer> indexes = new ArrayList<Integer>();
-            for (int i = 1; i < danhSachHang.size(); i++) {
-                Hang tempHang = Hang.taoHang(danhSachHang.get(i), this.attributeSeparator);
-                if (tempHang.getTenNhaSanXuat().toLowerCase().trim().equals(tenNhaSanXuat.toLowerCase().trim())) {
-                    indexes.add(i);
-                }
-            }
-            int count = 0;
-            for (int i : indexes) {
-                danhSachHang.remove(i - count);
-                count += 1;
-            }
-            String newDatabase = String.join("\n", danhSachHang);
-            FileWriter writer = new FileWriter(new File(this.hangDatabasePath));
-            writer.write(newDatabase);
-            writer.close();
-        } catch (Exception e) {
-            System.out.printf("%s\n", e.getMessage());
-        }
-    }
-
-    public void xoaMotHangTheoTenNhaBanLe(String tenNhaBanLe) {
-        try {
-            ArrayList<String> danhSachHang = new ArrayList<String>(
-                    Arrays.asList(Files.readString(Path.of(this.hangDatabasePath)).split("\n")));
-            int index = -1;
-            for (int i = 1; i < danhSachHang.size(); i++) {
-                Hang tempHang = Hang.taoHang(danhSachHang.get(i), this.attributeSeparator);
-                if (tempHang.getTenNhaBanLe().toLowerCase().trim().equals(tenNhaBanLe.toLowerCase().trim())) {
-                    index = i;
-                    break;
-                }
-            }
-            if (index > 0) {
-                danhSachHang.remove(index);
-            }
-            String newDatabase = String.join("\n", danhSachHang);
-            FileWriter writer = new FileWriter(new File(this.hangDatabasePath));
-            writer.write(newDatabase);
-            writer.close();
-        } catch (Exception e) {
-            System.out.printf("%s\n", e.getMessage());
-        }
-    }
-
-    public void xoaHangTheoTenNhaBanLe(String tenNhaBanLe) {
-
-        try {
-            ArrayList<String> danhSachHang = new ArrayList<String>(
-                    Arrays.asList(Files.readString(Path.of(this.hangDatabasePath)).split("\n")));
-            ArrayList<Integer> indexes = new ArrayList<Integer>();
-            for (int i = 1; i < danhSachHang.size(); i++) {
-                Hang tempHang = Hang.taoHang(danhSachHang.get(i), this.attributeSeparator);
-                if (tempHang.getTenNhaBanLe().toLowerCase().trim().equals(tenNhaBanLe.toLowerCase().trim())) {
-                    indexes.add(i);
-                }
-            }
-            int count = 0;
-            for (int i : indexes) {
-                danhSachHang.remove(i - count);
-                count += 1;
-            }
-            String newDatabase = String.join("\n", danhSachHang);
-            FileWriter writer = new FileWriter(new File(this.hangDatabasePath));
-            writer.write(newDatabase);
-            writer.close();
-        } catch (Exception e) {
-            System.out.printf("%s\n", e.getMessage());
-        }
-    }
-
-    public void xoaMotHangTheoThoiDiemNhap(Date thoiDiemNhap) {
-
-        try {
-            ArrayList<String> danhSachHang = new ArrayList<String>(
-                    Arrays.asList(Files.readString(Path.of(this.hangDatabasePath)).split("\n")));
-            int index = -1;
-            for (int i = 1; i < danhSachHang.size(); i++) {
-                Hang tempHang = Hang.taoHang(danhSachHang.get(i), this.attributeSeparator);
-                if (tempHang.getThoiDiemNhap().equals(thoiDiemNhap)) {
-                    index = i;
-                    break;
-                }
-            }
-            if (index > 0) {
-                danhSachHang.remove(index);
-            }
-            String newDatabase = String.join("\n", danhSachHang);
-            FileWriter writer = new FileWriter(new File(this.hangDatabasePath));
-            writer.write(newDatabase);
-            writer.close();
-        } catch (Exception e) {
-            System.out.printf("%s\n", e.getMessage());
-        }
-    }
-
-    public void xoaHangTheoThoiDiemNhap(Date thoiDiemNhap) {
-
-        try {
-            ArrayList<String> danhSachHang = new ArrayList<String>(
-                    Arrays.asList(Files.readString(Path.of(this.hangDatabasePath)).split("\n")));
-            ArrayList<Integer> indexes = new ArrayList<Integer>();
-            for (int i = 1; i < danhSachHang.size(); i++) {
-                Hang tempHang = Hang.taoHang(danhSachHang.get(i), this.attributeSeparator);
-                if (tempHang.getThoiDiemNhap().equals(thoiDiemNhap)) {
-                    indexes.add(i);
-                }
-            }
-            int count = 0;
-            for (int i : indexes) {
-                danhSachHang.remove(i - count);
-                count += 1;
-            }
-            String newDatabase = String.join("\n", danhSachHang);
-            FileWriter writer = new FileWriter(new File(this.hangDatabasePath));
-            writer.write(newDatabase);
-            writer.close();
-        } catch (Exception e) {
-            System.out.printf("%s\n", e.getMessage());
-        }
-    }
-
-    public void xoaMotHangTheoThoiDiemXuat(Date thoiDiemXuat) {
-        try {
-            ArrayList<String> danhSachHang = new ArrayList<String>(
-                    Arrays.asList(Files.readString(Path.of(this.hangDatabasePath)).split("\n")));
-            int index = -1;
-            for (int i = 1; i < danhSachHang.size(); i++) {
-                Hang tempHang = Hang.taoHang(danhSachHang.get(i), this.attributeSeparator);
-                if (tempHang.getThoiDiemXuat().equals(thoiDiemXuat)) {
-                    index = i;
-                    break;
-                }
-            }
-            if (index > 0) {
-                danhSachHang.remove(index);
-            }
-            String newDatabase = String.join("\n", danhSachHang);
-            FileWriter writer = new FileWriter(new File(this.hangDatabasePath));
-            writer.write(newDatabase);
-            writer.close();
-        } catch (Exception e) {
-            System.out.printf("%s\n", e.getMessage());
-        }
-    }
-
-    public void xoaHangTheoThoiDiemXuat(Date thoiDiemXuat) {
-        try {
-            ArrayList<String> danhSachHang = new ArrayList<String>(
-                    Arrays.asList(Files.readString(Path.of(this.hangDatabasePath)).split("\n")));
-            ArrayList<Integer> indexes = new ArrayList<Integer>();
-            for (int i = 1; i < danhSachHang.size(); i++) {
-                Hang tempHang = Hang.taoHang(danhSachHang.get(i), this.attributeSeparator);
-                if (tempHang.getThoiDiemXuat().equals(thoiDiemXuat)) {
-                    indexes.add(i);
-                }
-            }
-            int count = 0;
-            for (int i : indexes) {
-                danhSachHang.remove(i - count);
-                count += 1;
-            }
-            String newDatabase = String.join("\n", danhSachHang);
-            FileWriter writer = new FileWriter(new File(this.hangDatabasePath));
-            writer.write(newDatabase);
-            writer.close();
-        } catch (Exception e) {
-            System.out.printf("%s\n", e.getMessage());
-        }
-    }
-
     public void xoaChinhXacHang(Hang hangNhap) {
         try {
             ArrayList<String> danhSachHang = new ArrayList<String>(
                     Arrays.asList(Files.readString(Path.of(this.hangDatabasePath)).split("\n")));
             int index = -1;
             for (int i = 1; i < danhSachHang.size(); i++) {
-                Hang tempHang = Hang.taoHang(danhSachHang.get(i), this.attributeSeparator);
+                Hang tempHang = Hang.fromString(danhSachHang.get(i), this.attributeSeparator);
                 if (tempHang.equals(hangNhap)) {
                     index = i;
                     break;
@@ -1504,8 +1033,7 @@ public class BoPhanBaoTriTongThe extends AbstractBoPhanBaoTriTongThe implements 
             }
             danhSachHang.remove(index);
             String newDatabase = String.join("\n", danhSachHang);
-            FileWriter writer = new FileWriter(new File(this.hangDatabasePath));
-            writer.write(newDatabase);
+            Files.writeString(Path.of(this.hangDatabasePath), newDatabase);
         } catch (Exception e) {
             System.out.printf("%s\n", e.getMessage());
         }
@@ -1526,83 +1054,7 @@ public class BoPhanBaoTriTongThe extends AbstractBoPhanBaoTriTongThe implements 
             }
             danhSachNhaSanXuat.remove(index);
             String newDatabase = String.join("\n", danhSachNhaSanXuat);
-            FileWriter writer = new FileWriter(new File(this.nhaSanXuatDatabasePath));
-            writer.write(newDatabase);
-        } catch (Exception e) {
-            System.out.printf("%s\n", e.getMessage());
-        }
-    }
-
-    public void xoaNhaSanXuatTheoTenNhaSanXuat(String tenNhaSanXuat) {
-        try {
-            ArrayList<String> danhSachNhaSanXuat = new ArrayList<String>(
-                    Arrays.asList(Files.readString(Path.of(this.nhaSanXuatDatabasePath)).split("\n")));
-            ArrayList<Integer> indexes = new ArrayList<Integer>();
-            for (int i = 1; i < danhSachNhaSanXuat.size(); i++) {
-                NhaSanXuat tempNhaSanXuat = NhaSanXuat.taoNhaSanXuat(danhSachNhaSanXuat.get(i),
-                        this.attributeSeparator);
-                if (tempNhaSanXuat.getTenNhaSanXuat().toLowerCase().trim().equals(tenNhaSanXuat.toLowerCase().trim())) {
-                    indexes.add(i);
-                }
-            }
-            int count = 0;
-            for (int i : indexes) {
-                danhSachNhaSanXuat.remove(i - count);
-                count += 1;
-            }
-            String newDatabase = String.join("\n", danhSachNhaSanXuat);
-            FileWriter writer = new FileWriter(new File(this.nhaSanXuatDatabasePath));
-            writer.write(newDatabase);
-        } catch (Exception e) {
-            System.out.printf("%s\n", e.getMessage());
-        }
-    }
-
-    public void xoaNhaSanXuatTheoDiaDiem(String diaDiem) {
-        try {
-            ArrayList<String> danhSachNhaSanXuat = new ArrayList<String>(
-                    Arrays.asList(Files.readString(Path.of(this.nhaSanXuatDatabasePath)).split("\n")));
-            ArrayList<Integer> indexes = new ArrayList<Integer>();
-            for (int i = 1; i < danhSachNhaSanXuat.size(); i++) {
-                NhaSanXuat tempNhaSanXuat = NhaSanXuat.taoNhaSanXuat(danhSachNhaSanXuat.get(i),
-                        this.attributeSeparator);
-                if (tempNhaSanXuat.getDiaDiem().toLowerCase().trim().equals(diaDiem.toLowerCase().trim())) {
-                    indexes.add(i);
-                }
-            }
-            int count = 0;
-            for (int i : indexes) {
-                danhSachNhaSanXuat.remove(i - count);
-                count += 1;
-            }
-            String newDatabase = String.join("\n", danhSachNhaSanXuat);
-            FileWriter writer = new FileWriter(new File(this.nhaSanXuatDatabasePath));
-            writer.write(newDatabase);
-        } catch (Exception e) {
-            System.out.printf("%s\n", e.getMessage());
-        }
-    }
-
-    public void xoaNhaSanXuatTheoSoDienThoai(String soDienThoai) {
-        try {
-            ArrayList<String> danhSachNhaSanXuat = new ArrayList<String>(
-                    Arrays.asList(Files.readString(Path.of(this.nhaSanXuatDatabasePath)).split("\n")));
-            ArrayList<Integer> indexes = new ArrayList<Integer>();
-            for (int i = 1; i < danhSachNhaSanXuat.size(); i++) {
-                NhaSanXuat tempNhaSanXuat = NhaSanXuat.taoNhaSanXuat(danhSachNhaSanXuat.get(i),
-                        this.attributeSeparator);
-                if (tempNhaSanXuat.getSoDienThoai().toLowerCase().trim().equals(soDienThoai.toLowerCase().trim())) {
-                    indexes.add(i);
-                }
-            }
-            int count = 0;
-            for (int i : indexes) {
-                danhSachNhaSanXuat.remove(i - count);
-                count += 1;
-            }
-            String newDatabase = String.join("\n", danhSachNhaSanXuat);
-            FileWriter writer = new FileWriter(new File(this.nhaSanXuatDatabasePath));
-            writer.write(newDatabase);
+            Files.writeString(Path.of(this.nhaSanXuatDatabasePath), newDatabase);
         } catch (Exception e) {
             System.out.printf("%s\n", e.getMessage());
         }
@@ -1623,163 +1075,7 @@ public class BoPhanBaoTriTongThe extends AbstractBoPhanBaoTriTongThe implements 
             }
             danhSachNhaBanLe.remove(index);
             String newDatabase = String.join("\n", danhSachNhaBanLe);
-            FileWriter writer = new FileWriter(new File(this.nhaBanLeDatabasePath));
-            writer.write(newDatabase);
-        } catch (Exception e) {
-            System.out.printf("%s\n", e.getMessage());
-        }
-
-    }
-
-    public void xoaMotNhaBanLeTheoTenNhaBanLe(String tenNhaBanLe) {
-        try {
-            ArrayList<String> danhSachNhaBanLe = new ArrayList<String>(
-                    Arrays.asList(Files.readString(Path.of(this.nhaBanLeDatabasePath)).split("\n")));
-            int index = -1;
-            for (int i = 1; i < danhSachNhaBanLe.size(); i++) {
-                NhaBanLe tempNhaSanXuat = NhaBanLe.taoNhaBanLe(danhSachNhaBanLe.get(i),
-                        this.attributeSeparator);
-                if (tempNhaSanXuat.getTenNhaBanLe().toLowerCase().trim().equals(tenNhaBanLe.toLowerCase().trim())) {
-                    index = i;
-                    break;
-                }
-            }
-            if (index > 0) {
-                danhSachNhaBanLe.remove(index);
-            }
-            String newDatabase = String.join("\n", danhSachNhaBanLe);
-            FileWriter writer = new FileWriter(new File(this.nhaBanLeDatabasePath));
-            writer.write(newDatabase);
-        } catch (Exception e) {
-            System.out.printf("%s\n", e.getMessage());
-        }
-
-    }
-
-    public void xoaNhaBanLeTheoTenNhaBanLe(String tenNhaBanLe) {
-        try {
-            ArrayList<String> danhSachNhaBanLe = new ArrayList<String>(
-                    Arrays.asList(Files.readString(Path.of(this.nhaBanLeDatabasePath)).split("\n")));
-            ArrayList<Integer> indexes = new ArrayList<Integer>();
-            for (int i = 1; i < danhSachNhaBanLe.size(); i++) {
-                NhaBanLe tempNhaSanXuat = NhaBanLe.taoNhaBanLe(danhSachNhaBanLe.get(i),
-                        this.attributeSeparator);
-                if (tempNhaSanXuat.getTenNhaBanLe().toLowerCase().trim().equals(tenNhaBanLe.toLowerCase().trim())) {
-                    indexes.add(i);
-                }
-            }
-            int count = 0;
-            for (int i : indexes) {
-                danhSachNhaBanLe.remove(i - count);
-                count += 1;
-            }
-            String newDatabase = String.join("\n", danhSachNhaBanLe);
-            FileWriter writer = new FileWriter(new File(this.nhaBanLeDatabasePath));
-            writer.write(newDatabase);
-        } catch (Exception e) {
-            System.out.printf("%s\n", e.getMessage());
-        }
-
-    }
-
-    public void xoaMotNhaBanLeTheoDiaDiem(String diaDiem) {
-        try {
-            ArrayList<String> danhSachNhaBanLe = new ArrayList<String>(
-                    Arrays.asList(Files.readString(Path.of(this.nhaBanLeDatabasePath)).split("\n")));
-            int index = -1;
-            for (int i = 1; i < danhSachNhaBanLe.size(); i++) {
-                NhaBanLe tempNhaSanXuat = NhaBanLe.taoNhaBanLe(danhSachNhaBanLe.get(i),
-                        this.attributeSeparator);
-                if (tempNhaSanXuat.getDiaDiem().toLowerCase().trim().equals(diaDiem.toLowerCase().trim())) {
-                    index = i;
-                    break;
-                }
-            }
-            if (index > 0) {
-                danhSachNhaBanLe.remove(index);
-            }
-            String newDatabase = String.join("\n", danhSachNhaBanLe);
-            FileWriter writer = new FileWriter(new File(this.nhaBanLeDatabasePath));
-            writer.write(newDatabase);
-        } catch (Exception e) {
-            System.out.printf("%s\n", e.getMessage());
-        }
-
-    }
-
-    public void xoaNhaBanLeTheoDiaDiem(String diaDiem) {
-        try {
-            ArrayList<String> danhSachNhaBanLe = new ArrayList<String>(
-                    Arrays.asList(Files.readString(Path.of(this.nhaBanLeDatabasePath)).split("\n")));
-            ArrayList<Integer> indexes = new ArrayList<Integer>();
-            for (int i = 1; i < danhSachNhaBanLe.size(); i++) {
-                NhaBanLe tempNhaSanXuat = NhaBanLe.taoNhaBanLe(danhSachNhaBanLe.get(i),
-                        this.attributeSeparator);
-                if (tempNhaSanXuat.getDiaDiem().toLowerCase().trim().equals(diaDiem.toLowerCase().trim())) {
-                    indexes.add(i);
-                }
-            }
-            int count = 0;
-            for (int i : indexes) {
-                danhSachNhaBanLe.remove(i - count);
-                count += 1;
-            }
-            String newDatabase = String.join("\n", danhSachNhaBanLe);
-            FileWriter writer = new FileWriter(new File(this.nhaBanLeDatabasePath));
-            writer.write(newDatabase);
-        } catch (Exception e) {
-            System.out.printf("%s\n", e.getMessage());
-        }
-
-    }
-
-    public void xoaMotNhaBanLeTheoSoDienThoai(String soDienThoai) {
-
-        try {
-            ArrayList<String> danhSachNhaBanLe = new ArrayList<String>(
-                    Arrays.asList(Files.readString(Path.of(this.nhaBanLeDatabasePath)).split("\n")));
-            int index = -1;
-            for (int i = 1; i < danhSachNhaBanLe.size(); i++) {
-                NhaBanLe tempNhaSanXuat = NhaBanLe.taoNhaBanLe(danhSachNhaBanLe.get(i),
-                        this.attributeSeparator);
-                if (tempNhaSanXuat.getSoDienThoai().toLowerCase().trim().equals(soDienThoai.toLowerCase().trim())) {
-                    index = i;
-                    break;
-                }
-            }
-            if (index > 0) {
-                danhSachNhaBanLe.remove(index);
-            }
-            String newDatabase = String.join("\n", danhSachNhaBanLe);
-            FileWriter writer = new FileWriter(new File(this.nhaBanLeDatabasePath));
-            writer.write(newDatabase);
-        } catch (Exception e) {
-            System.out.printf("%s\n", e.getMessage());
-        }
-
-    }
-
-    public void xoaNhaBanLeTheoSoDienThoai(String soDienThoai) {
-
-        try {
-            ArrayList<String> danhSachNhaBanLe = new ArrayList<String>(
-                    Arrays.asList(Files.readString(Path.of(this.nhaBanLeDatabasePath)).split("\n")));
-            ArrayList<Integer> indexes = new ArrayList<Integer>();
-            for (int i = 1; i < danhSachNhaBanLe.size(); i++) {
-                NhaBanLe tempNhaSanXuat = NhaBanLe.taoNhaBanLe(danhSachNhaBanLe.get(i),
-                        this.attributeSeparator);
-                if (tempNhaSanXuat.getSoDienThoai().toLowerCase().trim().equals(soDienThoai.toLowerCase().trim())) {
-                    indexes.add(i);
-                }
-            }
-            int count = 0;
-            for (int i : indexes) {
-                danhSachNhaBanLe.remove(i - count);
-                count += 1;
-            }
-            String newDatabase = String.join("\n", danhSachNhaBanLe);
-            FileWriter writer = new FileWriter(new File(this.nhaBanLeDatabasePath));
-            writer.write(newDatabase);
+            Files.writeString(Path.of(this.nhaSanXuatDatabasePath), newDatabase);
         } catch (Exception e) {
             System.out.printf("%s\n", e.getMessage());
         }
@@ -1792,7 +1088,7 @@ public class BoPhanBaoTriTongThe extends AbstractBoPhanBaoTriTongThe implements 
                     Arrays.asList(Files.readString(Path.of(this.hangDatabasePath)).split("\n")));
             int index = -1;
             for (int i = 1; i < danhSachHang.size(); i++) {
-                Hang tempHang = Hang.taoHang(danhSachHang.get(i), this.attributeSeparator);
+                Hang tempHang = Hang.fromString(danhSachHang.get(i), this.attributeSeparator);
                 if (tempHang.equals(hangCu)) {
                     index = i;
                     break;
@@ -1802,8 +1098,8 @@ public class BoPhanBaoTriTongThe extends AbstractBoPhanBaoTriTongThe implements 
                 danhSachHang.set(index, hangMoi.toString(this.attributeSeparator));
             }
             String newDatabase = String.join("\n", danhSachHang);
-            FileWriter writer = new FileWriter(new File(this.hangDatabasePath));
-            writer.write(newDatabase);
+            Files.writeString(Path.of(this.hangDatabasePath), newDatabase);
+
         } catch (Exception e) {
             System.out.printf("%s\n", e.getMessage());
         }
@@ -1826,8 +1122,7 @@ public class BoPhanBaoTriTongThe extends AbstractBoPhanBaoTriTongThe implements 
                 danhSachNhaSanXuat.set(index, nhaSanXuatMoi.toString(this.attributeSeparator));
             }
             String newDatabase = String.join("\n", danhSachNhaSanXuat);
-            FileWriter writer = new FileWriter(new File(this.nhaSanXuatDatabasePath));
-            writer.write(newDatabase);
+            Files.writeString(Path.of(this.nhaSanXuatDatabasePath), newDatabase);
         } catch (Exception e) {
             System.out.printf("%s\n", e.getMessage());
         }
@@ -1847,11 +1142,10 @@ public class BoPhanBaoTriTongThe extends AbstractBoPhanBaoTriTongThe implements 
                 }
             }
             if (index > 0) {
-                danhSachNhaBanLe.set(index, nhaBanLeMoi.toString());
+                danhSachNhaBanLe.set(index, nhaBanLeMoi.toString(this.attributeSeparator));
             }
             String newDatabase = String.join("\n", danhSachNhaBanLe);
-            FileWriter writer = new FileWriter(new File(this.nhaBanLeDatabasePath));
-            writer.write(newDatabase);
+            Files.writeString(Path.of(this.nhaBanLeDatabasePath), newDatabase);
         } catch (Exception e) {
             System.out.printf("%s\n", e.getMessage());
         }
