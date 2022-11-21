@@ -192,8 +192,6 @@ public class BoPhanMuaBan extends AbstractBoPhanMuaBan implements BoPhan {
                     Arrays.asList(Files.readString(Path.of(this.giaDatabasePath), StandardCharsets.UTF_8).split("\n")));
             for (int i = 1; i < giasDoc.size(); i++) {
 
-                System.out.println(giasDoc.get(i));
-
                 Gia tempGia = Gia.fromString(giasDoc.get(i), this.attributeSeparator);
 
                 if (tempGia.equals(gia)) {
