@@ -1,0 +1,2 @@
+ten hang,loai hang,gia
+banh keo,thuc an,8.0

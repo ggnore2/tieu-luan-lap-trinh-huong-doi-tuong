@@ -1,0 +1,8 @@
+ten kho,so luong hang trong kho,gioi han cua kho
+Kho A,0,9999
+Kho B,0,2000
+Kho B,0,2000
+Kho B,0,2000
+Kho A,0,9999
+Kho A,0,9999
+Kho A,0,9999
